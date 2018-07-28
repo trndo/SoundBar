@@ -27,11 +27,6 @@ class Songs
     private $FileName;
 
     /**
-     * @ORM\Column(type="integer", nullable=true)
-     */
-    private $AlbumId;
-
-    /**
      * @ORM\Column(type="integer")
      */
     private $Duration;
@@ -77,10 +72,21 @@ class Songs
     private $added_at;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Styles", inversedBy="songs")
-     * @ORM\JoinColumn(nullable=true)
+     * @ORM\ManyToOne(targetEntity="App\Entity\Artists", cascade={"persist", "remove"})
+     * @ORM\JoinColumn(nullable=false)
      */
-    private $style;
+    private $Artist;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Albums")
+     */
+    private $Album;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Styles")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $Style;
 
     public function getId()
     {
@@ -222,17 +228,41 @@ class Songs
     /**
      * @return mixed
      */
-    public function getStyle():Styles
+
+    public function getArtist(): ?Artists
     {
-        return $this->style;
+        return $this->Artist;
     }
 
-    /**
-     * @param mixed $style
-     */
-    public function setStyle(Styles $style)
+    public function setArtist(Artists $Artist): self
     {
-        $this->style = $style;
+        $this->Artist = $Artist;
+
+        return $this;
+    }
+
+    public function getAlbum(): ?Albums
+    {
+        return $this->Album;
+    }
+
+    public function setAlbum(?Albums $Album): self
+    {
+        $this->Album = $Album;
+
+        return $this;
+    }
+
+    public function getStyle(): ?Styles
+    {
+        return $this->Style;
+    }
+
+    public function setStyle(?Styles $Style): self
+    {
+        $this->Style = $Style;
+
+        return $this;
     }
 
 }

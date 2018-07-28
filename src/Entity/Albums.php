@@ -24,22 +24,25 @@ class Albums
     /**
      * @ORM\Column(type="integer")
      */
-    private $ArtistId;
 
-    /**
-     * @ORM\Column(type="integer")
-     */
-    private $StyleId;
-
-    /**
-     * @ORM\Column(type="integer")
-     */
     private $Year;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $Image;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Artists")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $Artist;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Styles")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $Style;
 
     public function getId()
     {
@@ -54,30 +57,6 @@ class Albums
     public function setAlbumName(string $AlbumName): self
     {
         $this->AlbumName = $AlbumName;
-
-        return $this;
-    }
-
-    public function getArtistId(): ?int
-    {
-        return $this->ArtistId;
-    }
-
-    public function setArtistId(int $ArtistId): self
-    {
-        $this->ArtistId = $ArtistId;
-
-        return $this;
-    }
-
-    public function getStyleId(): ?int
-    {
-        return $this->StyleId;
-    }
-
-    public function setStyleId(int $StyleId): self
-    {
-        $this->StyleId = $StyleId;
 
         return $this;
     }
@@ -102,6 +81,30 @@ class Albums
     public function setImage(?string $Image): self
     {
         $this->Image = $Image;
+
+        return $this;
+    }
+
+    public function getArtist(): ?Artists
+    {
+        return $this->Artist;
+    }
+
+    public function setArtist(?Artists $Artist): self
+    {
+        $this->Artist = $Artist;
+
+        return $this;
+    }
+
+    public function getStyle(): ?Styles
+    {
+        return $this->Style;
+    }
+
+    public function setStyle(?Styles $Style): self
+    {
+        $this->Style = $Style;
 
         return $this;
     }
