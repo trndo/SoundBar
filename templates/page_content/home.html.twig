@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {% for song in songs %}
+        {% for artist in artists %}
+        <p>{{ song.songName }} - {{ artist.artistName }}  | {{ song.duration }} min,{{ song.size }} mB,{{ song.bitRate }} kb/s</p>
+        {% endfor %}
+        <audio controls preload="metadata" style=" width:300px;">
+            <source src="uploads/{{ song.path }}" type="audio/mpeg">
+            <source src="uploads/{{ song.path }}" type="audio/ogg">
+            Your browser does not support the audio element.
+        </audio><br/>
+    {% endfor %}
+{% endblock %}

@@ -5,6 +5,7 @@
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: 'en'
+    app.uploads_dir: '%kernel.project_dir%/public/uploads/'
 
 services:
     # default configuration for services in *this* file
@@ -29,3 +30,15 @@ services:
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+
+    # File manager
+    App\Service\FileSystem\FileManager:
+      arguments:
+      - '@app.filesystem.file_name'
+      - '%app.uploads_dir%'
+
+    app.filesystem.file_name:
+      class: App\Service\Filesystem\HashFileName
+
+    #Aliases
+    App\Service\FileSystem\HashFileName: '@app.filesystem.file_name'

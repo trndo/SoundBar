@@ -22,12 +22,7 @@ class Songs
     private $SongName;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $FileName;
-
-    /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="string")
      */
     private $Duration;
 
@@ -42,11 +37,6 @@ class Songs
     private $Description;
 
     /**
-     * @ORM\Column(type="string", length=100)
-     */
-    private $Extension;
-
-    /**
      * @ORM\Column(type="string", length=255)
      */
     private $Location;
@@ -55,16 +45,6 @@ class Songs
      * @ORM\Column(type="string", length=255)
      */
     private $Path;
-
-    /**
-     * @ORM\Column(type="integer", nullable=true)
-     */
-    private $Year;
-
-    /**
-     * @ORM\Column(type="integer")
-     */
-    private $Rating;
 
     /**
      * @ORM\Column(type="datetime")
@@ -78,15 +58,15 @@ class Songs
     private $Artist;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Albums")
-     */
-    private $Album;
-
-    /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Styles")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */
     private $Style;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $BitRate;
 
     public function getId()
     {
@@ -105,24 +85,12 @@ class Songs
         return $this;
     }
 
-    public function getFileName(): ?string
-    {
-        return $this->FileName;
-    }
-
-    public function setFileName(string $FileName): self
-    {
-        $this->FileName = $FileName;
-
-        return $this;
-    }
-
-    public function getDuration(): ?int
+    public function getDuration(): ?string
     {
         return $this->Duration;
     }
 
-    public function setDuration(int $Duration): self
+    public function setDuration(string $Duration): self
     {
         $this->Duration = $Duration;
 
@@ -153,18 +121,6 @@ class Songs
         return $this;
     }
 
-    public function getExtension(): ?string
-    {
-        return $this->Extension;
-    }
-
-    public function setExtension(string $Extension): self
-    {
-        $this->Extension = $Extension;
-
-        return $this;
-    }
-
     public function getLocation(): ?string
     {
         return $this->Location;
@@ -185,30 +141,6 @@ class Songs
     public function setPath(?string $Path): self
     {
         $this->Path = $Path;
-
-        return $this;
-    }
-
-    public function getYear(): ?int
-    {
-        return $this->Year;
-    }
-
-    public function setYear(?int $Year): self
-    {
-        $this->Year = $Year;
-
-        return $this;
-    }
-
-    public function getRating(): ?int
-    {
-        return $this->Rating;
-    }
-
-    public function setRating(int $Rating): self
-    {
-        $this->Rating = $Rating;
 
         return $this;
     }
@@ -241,18 +173,6 @@ class Songs
         return $this;
     }
 
-    public function getAlbum(): ?Albums
-    {
-        return $this->Album;
-    }
-
-    public function setAlbum(?Albums $Album): self
-    {
-        $this->Album = $Album;
-
-        return $this;
-    }
-
     public function getStyle(): ?Styles
     {
         return $this->Style;
@@ -261,6 +181,18 @@ class Songs
     public function setStyle(?Styles $Style): self
     {
         $this->Style = $Style;
+
+        return $this;
+    }
+
+    public function getBitRate(): ?string
+    {
+        return $this->BitRate;
+    }
+
+    public function setBitRate(string $BitRate): self
+    {
+        $this->BitRate = $BitRate;
 
         return $this;
     }

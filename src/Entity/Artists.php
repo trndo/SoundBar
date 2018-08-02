@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ArtistsRepository")
@@ -27,12 +28,10 @@ class Artists
     private $Year;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $Description;
-
-    /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\NotBlank(message="Please upload jpeg,png file")
+     * @Assert\File(mimeTypes={ "image/jpeg", "image/png" })
+     *
      */
     private $Image;
 
@@ -65,24 +64,12 @@ class Artists
         return $this;
     }
 
-    public function getDescription(): ?string
-    {
-        return $this->Description;
-    }
-
-    public function setDescription(string $Description): self
-    {
-        $this->Description = $Description;
-
-        return $this;
-    }
-
-    public function getImage(): ?string
+    public function getImage()
     {
         return $this->Image;
     }
 
-    public function setImage(?string $Image): self
+    public function setImage($Image): self
     {
         $this->Image = $Image;
 
