@@ -2,9 +2,9 @@
 
 {% block body %}
     {% for song in songs %}
-        {% for artist in artists %}
-        <p>{{ song.songName }} - {{ artist.artistName }}  | {{ song.duration }} min,{{ song.size }} mB,{{ song.bitRate }} kb/s</p>
-        {% endfor %}
+        <p>{{ song.songName }} - {{ song.artist.artistName }} | {{ song.duration }} min,
+            {{ song.size }} mB , {{ song.bitRate }} Kb/s
+        </p>
         <audio controls preload="metadata" style=" width:300px;">
             <source src="uploads/{{ song.path }}" type="audio/mpeg">
             <source src="uploads/{{ song.path }}" type="audio/ogg">

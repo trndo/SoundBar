@@ -21,13 +21,10 @@ class HomePageController extends AbstractController
      */
     public function index()
     {
-        $repoArtists=$this->getDoctrine()->getRepository(Artists::class);
         $repoSongs=$this->getDoctrine()->getRepository(Songs::class);
-        $artists=$repoArtists->findAll();
         $songs=$repoSongs->findAll();
 
         return $this->render('page_content/home.html.twig',[
-            'artists' => $artists,
             'songs' => $songs]);
 
 
