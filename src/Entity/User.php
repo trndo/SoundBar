@@ -22,20 +22,20 @@ class User implements UserInterface,\Serializable
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=25,unique=true)
+     * @ORM\Column(type="string", length=25)
      * @Assert\NotBlank()
      */
-    private $UserName;
+    private $username;
 
     /**
      * @ORM\Column(type="string", length=255,unique=true)
      * @Assert\NotBlank()
      * @Assert\Email()
      */
-    private $Email;
+    private $email;
 
     /**
-     * @ORM\Column(type="string", length=70)
+     * @ORM\Column(type="string", length=70,unique=true)
      */
     private $Password;
 
@@ -66,26 +66,26 @@ class User implements UserInterface,\Serializable
         return $this->id;
     }
 
-    public function getUserName(): ?string
+    public function getUsername(): ?string
     {
-        return $this->UserName;
+        return $this->username;
     }
 
-    public function setUserName(string $UserName): self
+    public function setUsername(string $username): self
     {
-        $this->UserName = $UserName;
+        $this->username = $username;
 
         return $this;
     }
 
     public function getEmail(): ?string
     {
-        return $this->Email;
+        return $this->email;
     }
 
-    public function setEmail(string $Email): self
+    public function setEmail(string $email): self
     {
-        $this->Email = $Email;
+        $this->email = $email;
 
         return $this;
     }
@@ -154,7 +154,7 @@ class User implements UserInterface,\Serializable
     {
         return serialize([
             $this->id,
-            $this->UserName,
+            $this->username,
             $this->Password
         ]);
     }
@@ -167,7 +167,7 @@ class User implements UserInterface,\Serializable
         list (
             $this->id,
             $this->username,
-            $this->password
+            $this->Password
             ) = unserialize($serialized, ['allowed_classes'=> false]);
     }
 

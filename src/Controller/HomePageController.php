@@ -8,8 +8,6 @@
 
 namespace App\Controller;
 
-
-use App\Entity\Artists;
 use App\Entity\Songs;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;

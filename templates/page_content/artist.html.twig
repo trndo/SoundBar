@@ -1,0 +1,6 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    {% for artist in artists %}
+        <img src="uploads/{{ artist.image }}">
+    {% endfor %}
+{% endblock %}
