@@ -29,14 +29,24 @@ class SongInfoFactory
         $this->fileManager= $fileManager;
     }
 
-    public function create(){
-
+    /**
+     * @return  Songs object
+     */
+    public function create()
+    {
         $this->addInfoFromSongInfoModel();
         $this->addInfoFromFileMp3Info();
 
         return $this->song;
+
     }
 
+    /**
+     * This method receive and set songs information
+     *
+     * from AddSongType.
+     *
+     */
     private function addInfoFromSongInfoModel()
     {
         $this->song->setStyle($this->model->getStyleName());
@@ -48,9 +58,13 @@ class SongInfoFactory
         if ($songName = $this->fileManager->upload($this->model->getPath())) {
             $this->song->setPath($songName);
         }
-
     }
-
+    /**
+     * This method receive songs information
+     *
+     * from song path and set it.
+     *
+     */
     private function addInfoFromFileMp3Info()
     {
         $audio = new Mp3Info($this->fileManager->realPath($this->song->getPath()));

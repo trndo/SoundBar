@@ -19,6 +19,9 @@ class SongsRepository extends ServiceEntityRepository
         parent::__construct($registry, Songs::class);
     }
 
+    /**
+     * This method receive song information from database and make query.
+     */
     public function findBySearchValue($searchValue)
     {
         $qb=$this->createQueryBuilder('s')

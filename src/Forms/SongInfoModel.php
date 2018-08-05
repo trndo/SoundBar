@@ -12,6 +12,13 @@ use Symfony\Component\Validator\Constraints as Assert;
 use App\Entity\Styles;
 use App\Entity\Artists;
 
+/**
+ * Class SongInfoModel use for building AddSongType.
+ *
+ * It use parameters and methods from Songs and Styles models.
+ *
+ * @package App\Forms
+ */
 class SongInfoModel
 {
     public $song_name;
