@@ -13,7 +13,7 @@ use App\Entity\Artists;
 use App\Forms\AddSongType;
 use App\Forms\ArtistType;
 use App\Forms\SongInfoModel;
-use App\Model\Song\SongInfoFactory;
+use App\Factory\SongInfoFactory;
 use App\Service\FileSystem\FileManager;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -32,21 +32,16 @@ class AddingPageController extends AbstractController
 
         if($form->isSubmitted() && $form->isValid()){
 
-            $factory = new SongInfoFactory($model);
-            $factory->create('Songs');
-            $factory->addInfoFromSongInfoModel($fileManager);
-            $factory->addInfoFromFileMp3Info($fileManager);
-
-            $song = $factory->getSong();
+            $factory = new SongInfoFactory($model,$fileManager);
+            $song = $factory->create();
 
             $em = $this->getDoctrine()->getManager();
             $em->persist($song);
             $em->flush();
         }
 
-        return $this->render('page_content/adding.html.twig',['form'=>$form->createView()]);
+        return $this->render('page_content/adding.html.twig', ['form'=>$form->createView()]);
     }
-
     /**
      * @Route("/addArtist",name="artist")
      */
@@ -58,19 +53,18 @@ class AddingPageController extends AbstractController
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()){
-            $factory = new SongInfoFactory($artist);
-            $factory->create('Artists');
-            $factory->addArtistInfo($fileManager);
-            $artist = $factory->getArtist();
+            $data = $form->getData();
+            $img = $data->getImage();
+            if ($pictureName = $fileManager->upload($img)) {
+                    $data->setImage($pictureName);
 
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($artist);
-            $em->flush();
-
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($artist);
+                $em->flush();
+            }
             return $this->redirect('/addSong');
 
         }
         return $this->render('page_content/addartist.html.twig',['form'=>$form->createView()]);
     }
-
 }

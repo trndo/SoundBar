@@ -8,12 +8,10 @@
 
 namespace App\Controller;
 
-
 use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
-
 
 class LogInController extends AbstractController
 {
@@ -22,15 +20,13 @@ class LogInController extends AbstractController
      */
     public function loginAction(Request $request, AuthenticationUtils $authUtils)
     {
-        // получить ошибку входа, если она есть
         $error = $authUtils->getLastAuthenticationError();
-        // последнее имя пользователя, введенное пользователем
+
         $lastUsername = $authUtils->getLastUsername();
         return $this->render('authorization/login.html.twig', [
             'last_username' => $lastUsername,
             'error'         => $error,
         ]);
-
     }
 }
 

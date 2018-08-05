@@ -50,7 +50,6 @@ class Songs
      * @ORM\Column(type="datetime")
      */
     private $added_at;
-
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Artists", cascade={"persist", "remove"})
      * @ORM\JoinColumn(nullable=false)
@@ -81,7 +80,6 @@ class Songs
     public function setSongName(string $SongName): self
     {
         $this->SongName = $SongName;
-
         return $this;
     }
 
@@ -93,7 +91,6 @@ class Songs
     public function setDuration(string $Duration): self
     {
         $this->Duration = $Duration;
-
         return $this;
     }
 
@@ -105,7 +102,6 @@ class Songs
     public function setSize(string $Size): self
     {
         $this->Size = $Size;
-
         return $this;
     }
 
@@ -156,10 +152,6 @@ class Songs
 
         return $this;
     }
-
-    /**
-     * @return mixed
-     */
 
     public function getArtist(): ?Artists
     {

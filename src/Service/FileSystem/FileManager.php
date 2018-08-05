@@ -11,7 +11,7 @@ namespace App\Service\FileSystem;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
-class FileManager
+class FileManager implements FileNamePrefixInterface
 {
     private $fileName;
     private $uploadDir;
@@ -48,4 +48,8 @@ class FileManager
     }
 
 
+    public function getPrefix(): string
+    {
+
+    }
 }

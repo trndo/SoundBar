@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container" style="max-width: 30%">
+        <h1><div class="row">
+         <div class="col-12" >
+           <ul>
+        {% for style in styles %}
+           <li><span class=" align-middle">
+            <a href="/showStyleSong/{{style.id}}">{{ style.styleName }}</a>
+               </span></li>
+        {% endfor %}
+           </ul>
+       </div>
+        </div></h1>
+    </div>
+{% endblock %}

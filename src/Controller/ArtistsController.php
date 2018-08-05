@@ -17,7 +17,7 @@ class ArtistsController extends AbstractController
     /**
      * @Route("/artsist",name="artists")
      */
-    public function index()
+    public function artist()
     {
         $repoSongs=$this->getDoctrine()->getRepository(Artists::class);
         $artists=$repoSongs->findAll();

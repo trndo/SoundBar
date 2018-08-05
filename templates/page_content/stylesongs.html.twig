@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container" style="max-width: 70%">
+        {% for song in songs %}
+            <div class="row" style="border-style: ridge">
+
+                <div class="col-7" >
+             <span class="align-middle">
+            {{ song.songName }} - {{ song.artist.artistName }} |<br> {{ song.duration }} min,
+                 {{ song.size }} mB , {{ song.bitRate }} Kb/s
+             </span>
+                </div>
+
+                <div class ="  col-5 ">
+                    <audio controls preload="metadata" style=" width:300px;">
+                        <source src="/uploads/{{ song.path }}" type="audio/mpeg">
+                        <source src="/uploads/{{ song.path }}" type="audio/ogg">
+                        Your browser does not support the audio element.
+                    </audio>
+                </div>
+
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
