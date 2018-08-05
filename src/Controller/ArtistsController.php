@@ -9,6 +9,7 @@
 namespace App\Controller;
 
 use App\Entity\Artists;
+use App\Entity\Songs;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
@@ -26,4 +27,15 @@ class ArtistsController extends AbstractController
             'artists' => $artists]);
     }
 
+    /**
+     * @Route("/showSong/{id}",name="showSong")
+     */
+    public function showSong($id)
+    {
+        $repoSongs=$this->getDoctrine()->getRepository(Songs::class);
+        $songs=$repoSongs->findBy(['Artist'=> $id]);
+
+        return $this->render('page_content/home.html.twig',[
+            'songs' => $songs]);
+    }
 }

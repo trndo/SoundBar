@@ -22,7 +22,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class AddingPageController extends AbstractController
 {
     /**
-     * @Route("/addSong",name="add")
+     * @Route("/addSong",name="addSong")
      */
     public function addSong(Request $request,FileManager $fileManager,SongInfoModel $model)
     {
@@ -38,6 +38,8 @@ class AddingPageController extends AbstractController
             $em = $this->getDoctrine()->getManager();
             $em->persist($song);
             $em->flush();
+
+            return $this->redirectToRoute('home');
         }
 
         return $this->render('page_content/adding.html.twig', ['form'=>$form->createView()]);
@@ -63,9 +65,10 @@ class AddingPageController extends AbstractController
                 $em->persist($artist);
                 $em->flush();
             }
-            return $this->redirect('/addSong');
 
+            return $this->redirectToRoute('addSong');
         }
+
         return $this->render('page_content/addartist.html.twig',['form'=>$form->createView()]);
     }
 
