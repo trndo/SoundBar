@@ -22,6 +22,10 @@ use Symfony\Component\Routing\Annotation\Route;
 class AddingPageController extends AbstractController
 {
     /**
+     * This method add songs information in
+     *
+     * database from AddSongType.
+     *
      * @Route("/addSong",name="addSong")
      */
     public function addSong(Request $request,FileManager $fileManager,SongInfoModel $model)
@@ -46,6 +50,10 @@ class AddingPageController extends AbstractController
     }
 
     /**
+     * This method add artists information in
+     *
+     * database from ArtistType.
+     *
      * @Route("/addArtist",name="artist")
      */
     public function addArtist(Request $request,FileManager $fileManager)

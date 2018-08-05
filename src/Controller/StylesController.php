@@ -17,6 +17,10 @@ use Symfony\Component\Routing\Annotation\Route;
 class StylesController extends AbstractController
 {
     /**
+     *  This method receive styles information
+     *
+     * from database.
+     *
      * @Route("/showStyle",name="showStyle")
      */
     public function showStyle()
@@ -29,6 +33,10 @@ class StylesController extends AbstractController
     }
 
     /**
+     * This method receive songs information
+     *
+     * from database.
+     *
      * @Route("/showStyleSong/{id}",name="showStyleSong")
      */
     public function showSong($id)

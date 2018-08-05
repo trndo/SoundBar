@@ -16,6 +16,12 @@ use App\Entity\Artists;
 class DeleteArtistController extends AbstractController
 {
     /**
+     * This method receive songs and artists
+     *
+     * from Artists and Songs classes and remove
+     *
+     * them from database.
+     *
      * @Route("/deleteArtist/{id}",name="deleteArtist")
      */
     public function deleteArtist($id)

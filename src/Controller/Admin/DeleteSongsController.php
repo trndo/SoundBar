@@ -15,6 +15,12 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class DeleteSongsController extends AbstractController
 {
     /**
+     * This method receive songs
+     *
+     * from Artists class and remove
+     *
+     * them from database.
+     *
      * @Route("/deleteSong/{id}",name="deleteSong")
      */
     public function deleteSong($id)

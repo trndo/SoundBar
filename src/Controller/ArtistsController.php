@@ -16,6 +16,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class ArtistsController extends AbstractController
 {
     /**
+     * This method receive artists information from
+     *
+     * database.
+     *
      * @Route("/artsist",name="artists")
      */
     public function artist()
@@ -28,6 +32,10 @@ class ArtistsController extends AbstractController
     }
 
     /**
+     * This method receive songs information
+     *
+     * from database.
+     *
      * @Route("/showSong/{id}",name="showSong")
      */
     public function showSong($id)

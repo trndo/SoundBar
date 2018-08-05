@@ -18,6 +18,10 @@ use Symfony\Component\Routing\Annotation\Route;
 class SearchResultListController extends AbstractController
 {
     /**
+     *  This method receive songs information
+     *
+     * from database.
+     *
      * @Route("/result", name="searchResult")
      */
     public function showSearchResult(Request $request)

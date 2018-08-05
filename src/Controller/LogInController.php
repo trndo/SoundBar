@@ -16,6 +16,12 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 class LogInController extends AbstractController
 {
     /**
+     * This method receive user information from
+     *
+     * Log in form and compare with data from
+     *
+     * database.
+     *
      * @Route("/login", name="loginAction")
      */
     public function loginAction(Request $request, AuthenticationUtils $authUtils)

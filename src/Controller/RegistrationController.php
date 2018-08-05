@@ -18,6 +18,10 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 class RegistrationController extends Controller
 {
     /**
+     * This method receive user information from
+     *
+     * UserType and pass it into database.
+     *
      * @Route("/register", name="userRegister")
      */
     public function register(Request $request, UserPasswordEncoderInterface $passwordEncoder)

@@ -15,6 +15,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class HomePageController extends AbstractController
 {
     /**
+     * his method add artists information in
+     *
+     * database from ArtistType.
      * @Route("/",name="home")
      */
     public function index()
