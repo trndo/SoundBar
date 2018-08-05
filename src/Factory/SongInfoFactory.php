@@ -16,15 +16,17 @@ use wapmorgan\Mp3Info\Mp3Info;
 
 class SongInfoFactory
 {
-    private $filemanager;
+    private $fileManager;
+
     private $song;
+
     private $model;
 
     public function __construct($model,FileManager $fileManager)
     {
         $this->song = new Songs();
         $this->model = $model;
-        $this->filemanager= $fileManager;
+        $this->fileManager= $fileManager;
     }
 
     public function create(){
@@ -43,7 +45,7 @@ class SongInfoFactory
         $this->song->setLocation($this->model->getLocation());
         $this->song->setDescription($this->model->getDescription());
         $this->song->setArtist($this->model->getArtist());
-        if ($songName = $this->filemanager->upload($this->model->getPath())) {
+        if ($songName = $this->fileManager->upload($this->model->getPath())) {
             $this->song->setPath($songName);
         }
 
@@ -51,7 +53,7 @@ class SongInfoFactory
 
     private function addInfoFromFileMp3Info()
     {
-        $audio = new Mp3Info($this->filemanager->realPath($this->song->getPath()));
+        $audio = new Mp3Info($this->fileManager->realPath($this->song->getPath()));
         $this->song->setDuration(gmdate("H:i:s",$audio->duration));
         $this->song->setSize(round($audio->audioSize/1048576));
         $this->song->setBitRate($audio->bitRate/1000);

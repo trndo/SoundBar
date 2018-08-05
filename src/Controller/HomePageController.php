@@ -25,5 +25,6 @@ class HomePageController extends AbstractController
         return $this->render('page_content/home.html.twig',[
             'songs' => $songs]);
     }
+
 }
 

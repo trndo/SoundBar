@@ -42,6 +42,7 @@ class AddingPageController extends AbstractController
 
         return $this->render('page_content/adding.html.twig', ['form'=>$form->createView()]);
     }
+
     /**
      * @Route("/addArtist",name="artist")
      */
@@ -67,4 +68,5 @@ class AddingPageController extends AbstractController
         }
         return $this->render('page_content/addartist.html.twig',['form'=>$form->createView()]);
     }
+
 }

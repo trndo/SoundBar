@@ -32,4 +32,5 @@ class SearchResultListController extends AbstractController
         return $this->render('page_content/searchresult.html.twig',[
             'songs' => $songs]);
     }
+
 }

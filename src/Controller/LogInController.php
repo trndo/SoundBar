@@ -28,5 +28,6 @@ class LogInController extends AbstractController
             'error'         => $error,
         ]);
     }
+
 }
 

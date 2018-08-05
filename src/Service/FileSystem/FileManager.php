@@ -11,16 +11,17 @@ namespace App\Service\FileSystem;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
-class FileManager implements FileNamePrefixInterface
+class FileManager
 {
     private $fileName;
     private $uploadDir;
 
-    public function __construct(FileNameInterface $fileName,string $uploadDir)
+    public function __construct(FileNameInterface $fileName, string $uploadDir)
     {
         $this->fileName = $fileName;
         $this->uploadDir = $uploadDir;
     }
+
     public function upload(UploadedFile $file)
     {
         try {
@@ -35,7 +36,7 @@ class FileManager implements FileNamePrefixInterface
     public function realPath(string $fileName)
     {
 
-        return $this->getUploadDir().$fileName;
+        return $this->getUploadDir() . $fileName;
 
     }
 
@@ -47,9 +48,6 @@ class FileManager implements FileNamePrefixInterface
         return $this->uploadDir;
     }
 
-
-    public function getPrefix(): string
-    {
-
-    }
 }
+
+

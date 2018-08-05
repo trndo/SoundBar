@@ -26,4 +26,5 @@ class ArtistSongsController extends AbstractController
         return $this->render('page_content/artistsongs.html.twig',[
             'songs' => $songs]);
     }
+
 }

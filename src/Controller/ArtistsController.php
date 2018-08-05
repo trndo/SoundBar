@@ -25,4 +25,5 @@ class ArtistsController extends AbstractController
         return $this->render('page_content/artist.html.twig',[
             'artists' => $artists]);
     }
+
 }
