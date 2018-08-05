@@ -19,4 +19,19 @@ class SongsRepository extends ServiceEntityRepository
         parent::__construct($registry, Songs::class);
     }
 
+    public function findBySearchValue($searchValue)
+    {
+        $qb=$this->createQueryBuilder('s')
+            ->select("s.SongName","s.Duration","s.Size","s.BitRate","s.Path","s.Description")
+            ->leftJoin("s.Artist","a")
+            ->addSelect('a.Artist_name')
+            ->where("s.SongName LIKE :searchValue")
+            ->orWhere('s.Description LIKE :searchValue')
+            ->orWhere("s.Location LIKE :searchValue")
+            ->orWhere("a.Artist_name LIKE :searchValue")
+            ->setParameter('searchValue','%'.$searchValue.'%')
+            ->getQuery();
+
+            return $qb->execute();
+    }
 }
