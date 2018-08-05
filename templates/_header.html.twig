@@ -17,7 +17,7 @@
             <li class="nav-item active">
                 <a class="nav-link" href="/register">Registration<span class="sr-only">(current)</span></a>
             </li>
-            {% if is_granted('ROLE_USER') %}
+            {% if is_granted('ROLE_USER') or is_granted('ROLE_ADMIN') %}
             <li class="nav-item active">
                 <a class="nav-link" href="/addSong">Add Song<span class="sr-only">(current)</span></a>
             </li>
@@ -29,7 +29,6 @@
                 <a class="nav-link" href="/login">Log in<span class="sr-only">(current)</span></a>
             </li>
             {% endif %}
-
         </ul>
         <form class="form-inline my-5 my-lg-0" action="{{ path("searchResult") }}">
             <input class="form-control mr-sm-2" type="search" placeholder="Search" name="searchValue">

@@ -4,7 +4,8 @@
     <div class="container" style="max-width: 70%">
     {% for artist in artists %}
         <a href="/showSong/{{artist.id}}"><img  src="uploads/{{ artist.image }} "  width="200px" height="200px" alt="..." class="img-thumbnail " ></a>
-        <h5>{{ artist.artistName }}</h5>
+        <h5>{{ artist.artistName }}
+            <a href="{{ path('deleteArtist',{'id': artist.id })}}">DELETE</a></h5>
     {% endfor %}
     </div>
 {% endblock %}

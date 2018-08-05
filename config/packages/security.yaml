@@ -25,3 +25,5 @@ security:
         path: /logout
         target: /
   access_control:
+  - { path: ^/deleteArtist, roles: ROLE_ADMIN }
+  - { path: ^/deleteSong, roles: [ROLE_ADMIN] }

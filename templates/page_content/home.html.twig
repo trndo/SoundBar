@@ -9,6 +9,9 @@
                  <span class="align-middle">
             {{ song.songName }} - {{ song.artist.artistName }} |<br> {{ song.duration }} min,
             {{ song.size }} mB , {{ song.bitRate }} Kb/s
+                     {% if is_granted('ROLE_ADMIN') %}
+                     <a href="{{ path('deleteSong',{'id': song.id })}}">DELETE</a>
+                     {% endif %}
                  </span>
 
             </div>
@@ -24,4 +27,5 @@
         </div>
     {% endfor %}
     </div>
+
 {% endblock %}
