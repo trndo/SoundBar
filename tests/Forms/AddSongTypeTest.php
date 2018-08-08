@@ -18,12 +18,13 @@ class AddSongTypeTest extends TypeTestCase
     public function testSubmitData()
     {
         $formData =[
-            'songName'=>'Beliver',
-            'artistName'=>'Imagine Dragons',
-            'description' =>'eeeee',
+            'id' => '1',
+            'song_name' => 'Beliver',
+            'artist' => 'Imagine Dragons',
+            'description' => 'eeeee',
             'location' => 'USA',
-            'styleName' => 'Rock'
-
+            'style_name' => 'Rock',
+            'path' => 'picture',
         ];
 
         $objectToCompare = new Songs();

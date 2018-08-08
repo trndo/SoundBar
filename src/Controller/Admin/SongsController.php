@@ -12,7 +12,7 @@ use App\Entity\Songs;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
-class DeleteSongsController extends AbstractController
+class SongsController extends AbstractController
 {
     /**
      * This method receive songs

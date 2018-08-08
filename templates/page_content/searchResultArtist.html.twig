@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <div class="container" style="max-width: 90%" >
+        <h1 class="text-left text-muted ">Choose your artist:
+            <form class="form-inline my-5 my-lg-0" action="{{ path("artists") }}">
+                Back to all artists
+                <button class="btn btn-outline-dark my-2 my-sm-0 " type="submit">Back</button>
+            </form>
+        </h1>
+        <div class="col-lg-12">
+            {% for artist in artists %}
+                <a href="/showSong/{{artist.id}}">
+                    <figure class="figure"  >
+                        <img src="uploads/{{ artist.Image }}" width="200px" height="300px" class="figure-img img-fluid rounded" alt="None">
+                        <figcaption class="figure-caption " > {{ artist.Artist_name }}</figcaption>
+                        {% if is_granted('ROLE_ADMIN') %}
+                            <a href="{{ path('deleteArtist',{'id': artist.id })}}">DELETE</a>
+                        {% endif %}
+                    </figure></a>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

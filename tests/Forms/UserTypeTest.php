@@ -17,9 +17,10 @@ class UserTypeTest extends TypeTestCase
     public function testSubmitData()
     {
         $formData =[
-            'email'=>'vetal1199@gmail.com',
-            'username'=>'trndo',
-            'plainPassword'=>'1234'
+            'id' => '1',
+            'email' => 'vetal1199@gmail.com',
+            'username' => 'trndo',
+            'plainPassword' => '1234'
         ];
 
         $objectToCompare = new User();

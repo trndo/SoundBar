@@ -20,7 +20,7 @@ class HomePageControllerTest extends WebTestCase
 
         $crawler = $client->request('GET','/');
 
-        self::assertEquals(500,$client->getResponse()->getStatusCode());
+        self::assertEquals(200,$client->getResponse()->getStatusCode());
 
     }
 

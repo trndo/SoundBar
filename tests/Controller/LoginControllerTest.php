@@ -21,8 +21,8 @@ class LoginControllerTest extends WebTestCase
 
         $form = $crawler->selectButton('Enter')->form();
 
-        $form['username'] = 'FeFe';
-        $form['password'] = '1234';
+        $form['_username'] = 'FeFe';
+        $form['_password'] = '1234';
 
         $crawler = $client->submit($form);
 

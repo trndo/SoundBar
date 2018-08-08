@@ -22,18 +22,19 @@ class SongInfoFactory
 
     private $model;
 
-    public function __construct($model,FileManager $fileManager)
+    public function __construct(FileManager $fileManager)
     {
         $this->song = new Songs();
-        $this->model = $model;
+
         $this->fileManager= $fileManager;
     }
 
     /**
      * @return  Songs object
      */
-    public function create()
+    public function create($model)
     {
+        $this->model = $model;
         $this->addInfoFromSongInfoModel();
         $this->addInfoFromFileMp3Info();
 

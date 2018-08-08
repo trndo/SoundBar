@@ -1,14 +1,16 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <div class="container" style="max-width: 70%">
-    {% for song in songs %}
-        <div class="row" style="border-style: ridge">
 
-            <div class="col-7" >
-                 <span class="align-middle">
-            {{ song.songName }} - {{ song.artist.artistName }} |<br> {{ song.duration }} min,
-            {{ song.size }} mB , {{ song.bitRate }} Kb/s
+    <div class="container " style="max-width: 80%" >
+    {% for song in songs %}
+        <div class="row" style=" border-radius:25px; border-style:groove; height: 65px; background: rgba(58,58,58,0.27); color: black; ">
+
+            <div class="col-lg-6">
+                 <span class="align-middle" >
+            {{ song.songName }} - {{ song.artist.artistName }} | {{ song.duration }} min
+            <br> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                     {{ song.size }} mB , {{ song.bitRate }} Kb/s
                      {% if is_granted('ROLE_ADMIN') %}
                      <a href="{{ path('deleteSong',{'id': song.id })}}">DELETE</a>
                      {% endif %}
@@ -16,8 +18,8 @@
 
             </div>
 
-            <div class="col-5" >
-        <audio controls preload="metadata" style=" width:300px;">
+            <div class="col-6" >
+        <audio controls preload="none" style=" width:400px;">
             <source src="/uploads/{{ song.path }}" type="audio/mpeg">
             <source src="/uploads/{{ song.path }}" type="audio/ogg">
             Your browser does not support the audio element.

@@ -19,4 +19,14 @@ class ArtistsRepository extends ServiceEntityRepository
         parent::__construct($registry, Artists::class);
     }
 
+    public function findBySearchValueArtist($searchValueArtist)
+    {
+        $qb=$this->createQueryBuilder('a')
+            ->select("a.Artist_name","a.Year","a.id","a.Image")
+            ->where("a.Artist_name LIKE :searchValueArtist")
+            ->setParameter('searchValueArtist','%'.$searchValueArtist.'%')
+            ->getQuery();
+
+        return $qb->execute();
+    }
 }

@@ -2,10 +2,17 @@
 
 {% block body %}
 
-    {# templates/default/new.html.twig #}
+    <div class="container" style="max-width: 70%">
     {{ form_start(form) }}
-    {{ form_widget(form) }}
+        {{ form_row(form.artist)}}
+        <a href="/addArtist"><button type="button" class="btn btn-secondary">Add Artist</button></a>
+        {{ form_row(form.song_name)}}
+        {{ form_row(form.description)}}
+        {{ form_row(form.location)}}
+        {{ form_row(form.style_name)}}
+        {{ form_row(form.path)}}
+        {{ form_row(form.save)}}
     {{ form_end(form) }}
-    <a href="/addArtist">Add artist</a>
+    </div>
 
 {% endblock %}

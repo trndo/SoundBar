@@ -10,6 +10,7 @@ namespace App\Forms;
 
 use App\Entity\Artists;
 use App\Entity\Songs;
+use App\Repository\ArtistsRepository;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -32,8 +33,11 @@ class AddSongType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('path',FileType::class)
-            ->add('artist',EntityType::class,[
+        $builder->add('artist',EntityType::class,[
+                'query_builder'=>function(ArtistsRepository $repo){
+                return $repo->createQueryBuilder('a')
+                            ->orderBy('a.id','DESC');
+                },
                 'choice_label'=>'artist_name',
                 'class'=>Artists::class])
             ->add('song_name',TextType::class)
@@ -42,6 +46,7 @@ class AddSongType extends AbstractType
             ->add('style_name',EntityType::class,[
                 'choice_label'=>'style_name',
                 'class'=>Styles::class])
+            ->add('path',FileType::class)
             ->add('save',SubmitType::class)
             ->getForm();
     }

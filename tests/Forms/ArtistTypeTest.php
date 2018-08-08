@@ -18,7 +18,7 @@ class ArtistTypeTest extends TypeTestCase
     public function testSubmitData()
     {
         $formData =[
-            'artistName'=>'Imagine Dragons',
+            'Artist_name'=>'Imagine Dragons',
             'year'=>'Imagine Dragons',
         ];
 

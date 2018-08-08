@@ -28,7 +28,7 @@ class AddingPageController extends AbstractController
      *
      * @Route("/addSong",name="addSong")
      */
-    public function addSong(Request $request,FileManager $fileManager,SongInfoModel $model)
+    public function addSong(Request $request,FileManager $fileManager,SongInfoModel $model,SongInfoFactory $songInfoFactory)
     {
         $form = $this->createForm(AddSongType::class,$model);
 
@@ -36,8 +36,7 @@ class AddingPageController extends AbstractController
 
         if($form->isSubmitted() && $form->isValid()){
 
-            $factory = new SongInfoFactory($model,$fileManager);
-            $song = $factory->create();
+            $song = $songInfoFactory->create($model);
 
             $em = $this->getDoctrine()->getManager();
             $em->persist($song);
