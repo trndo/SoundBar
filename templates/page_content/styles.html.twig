@@ -1,17 +1,66 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <div class="container" style="max-width: 30%">
-        <h1><div class="row">
+    <h1 class="text-left text-muted ">Choose your style:</h1>
+    <div class="container" style="max-width: 80%">
+        <div class="row">
          <div class="col-12" >
-           <ul>
-        {% for style in styles %}
-           <li><span class=" align-middle">
-            <a href="/showStyleSong/{{style.id}}">{{ style.styleName }}</a>
-               </span></li>
-        {% endfor %}
-           </ul>
+             <a href="/showStyleSong/{{styles.0.id}}">
+                 <figure class="figure" >
+                     <img src="img/rock.jpeg" width="200px" height="300px" class="figure-img img-fluid rounded" alt="None">
+                     <figcaption class="figure-caption " > {{styles.0.styleName  }}</figcaption>
+                 </figure></a>
+            <a href="/showStyleSong/{{styles.1.id}}">
+                <figure class="figure" >
+                    <img src="img/pop.jpeg" width="200px" height="300px" class="figure-img img-fluid rounded" alt="None">
+                    <figcaption class="figure-caption " > {{styles.1.styleName  }}</figcaption>
+                </figure></a>
+             <a href="/showStyleSong/{{styles.2.id}}">
+                 <figure class="figure" >
+                     <img src="img/raaap.jpg" width="200px" height="300px" class="figure-img img-fluid rounded" alt="None">
+                     <figcaption class="figure-caption " > {{styles.2.styleName  }}</figcaption>
+                 </figure></a>
+             <a href="/showStyleSong/{{styles.3.id}}">
+                 <figure class="figure" >
+                     <img src="img/folk.png" width="200px" height="300px" class="figure-img img-fluid rounded" alt="None">
+                     <figcaption class="figure-caption " > {{styles.3.styleName  }}</figcaption>
+                 </figure></a>
+             <a href="/showStyleSong/{{styles.4.id}}">
+                 <figure class="figure" >
+                     <img src="img/metal.jpg" width="200px" height="300px" class="figure-img img-fluid rounded" alt="None">
+                     <figcaption class="figure-caption " > {{styles.4.styleName  }}</figcaption>
+                 </figure></a>
+             <a href="/showStyleSong/{{styles.5.id}}">
+                 <figure class="figure" >
+                     <img src="img/dubstep.jpg" width="200px" height="300px" class="figure-img img-fluid rounded" alt="None">
+                     <figcaption class="figure-caption " > {{styles.5.styleName  }}</figcaption>
+                 </figure></a>
+             <a href="/showStyleSong/{{styles.6.id}}">
+                 <figure class="figure" >
+                     <img src="img/classical.jpg" width="200px" height="300px" class="figure-img img-fluid rounded" alt="None">
+                     <figcaption class="figure-caption " > {{styles.6.styleName  }}</figcaption>
+                 </figure></a>
+             <a href="/showStyleSong/{{styles.7.id}}">
+                 <figure class="figure" >
+                     <img src="img/Jazz.jpg" width="200px" height="300px" class="figure-img img-fluid rounded" alt="None">
+                     <figcaption class="figure-caption " > {{styles.7.styleName  }}</figcaption>
+                 </figure></a>
+             <a href="/showStyleSong/{{styles.8.id}}">
+                 <figure class="figure" >
+                     <img src="img/electro.jpg" width="200px" height="300px" class="figure-img img-fluid rounded" alt="None">
+                     <figcaption class="figure-caption " > {{styles.8.styleName  }}</figcaption>
+                 </figure></a>
+             <a href="/showStyleSong/{{styles.9.id}}">
+                 <figure class="figure" >
+                     <img src="img/Soundtrack.jpg" width="200px" height="300px" class="figure-img img-fluid rounded" alt="None">
+                     <figcaption class="figure-caption " > {{styles.9.styleName  }}</figcaption>
+                 </figure></a>
+             <a href="/showStyleSong/{{styles.10.id}}">
+                 <figure class="figure" >
+                     <img src="img/chanson.jpg" width="200px" height="300px" class="figure-img img-fluid rounded" alt="None">
+                     <figcaption class="figure-caption " > {{styles.10.styleName  }}</figcaption>
+                 </figure></a>
        </div>
-        </div></h1>
+        </div>
     </div>
 {% endblock %}
